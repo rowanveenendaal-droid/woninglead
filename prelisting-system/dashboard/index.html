@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<title>Pre-listing Dashboard</title>
+<style>
+body {font-family: Arial; background:#f4f4f4; margin:0; padding:20px;}
+table {border-collapse: collapse; width: 100%; background: #fff;}
+th, td {border: 1px solid #ccc; padding: 8px;}
+th {background:#0073e6; color:white;}
+tr:nth-child(even){background:#f9f9f9;}
+.status-A {color:green;font-weight:bold;}
+.status-B {color:orange;font-weight:bold;}
+</style>
+</head>
+<body>
+<h1>Pre-listing Dealflow</h1>
+<table id="leads-table">
+<thead>
+<tr><th>Lead ID</th><th>Plaats</th><th>Signaal</th><th>Score</th><th>Status</th></tr>
+</thead>
+<tbody></tbody>
+</table>
+<script>
+const leads = [
+    {id: 1, plaats:"Nijmegen", signaal:"overlijden", score:80, status:"A"},
+    {id: 2, plaats:"Arnhem", signaal:"scheiding", score:60, status:"A"}
+];
+const tbody = document.querySelector("#leads-table tbody");
+leads.forEach(lead=>{
+    const tr=document.createElement("tr");
+    tr.innerHTML=`<td>${lead.id}</td><td>${lead.plaats}</td><td>${lead.signaal}</td><td>${lead.score}</td><td class="status-${lead.status}">${lead.status}</td>`;
+    tbody.appendChild(tr);
+});
+</script>
+</body>
+</html>
